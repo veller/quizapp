@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { shuffle } from "../utils";
 import {
   Button,
   QuestionTitle,
@@ -7,27 +6,43 @@ import {
   Answer
 } from "./QuestionsStyles";
 
-function Questions({ question, setIndex, setScore }) {
-  let isCorrect = null;
-  const answers = [question.correct_answer, ...question.incorrect_answers];
-  const correctAnswer = answers[0];
-  const shuffledAnswers = shuffle(answers);
+function Questions({
+  question,
+  setIndex,
+  setScore,
+  correctAnswer,
+  shuffledAnswers
+}) {
+  const [isCorrect, setCorrect] = useState(null);
+  const [isSelectedAnswer, setSelectedAnswer] = useState(null);
+  const [isDisabled, setDisabled] = useState(false);
 
-  const handleFeedback = (answer, i) => {
-    isCorrect = answer === correctAnswer;
+  const handleFeedback = answer => {
+    setSelectedAnswer(answer);
+    setCorrect(answer === correctAnswer);
+    setDisabled(true);
   };
 
   const handleNextQuestion = () => {
     setIndex(prevState => prevState + 1);
     isCorrect && setScore(prevState => prevState + 1);
+    setSelectedAnswer(null);
+    setDisabled(false);
   };
+
+  console.log(correctAnswer);
 
   return (
     <>
       <QuestionTitle>{question.question}</QuestionTitle>
       <AnswersContainer>
-        {shuffledAnswers.map((answer, i) => (
-          <Answer key={answer} onClick={() => handleFeedback(answer, i)}>
+        {shuffledAnswers.map(answer => (
+          <Answer
+            isSelectedAnswer={answer === isSelectedAnswer}
+            key={answer}
+            onClick={() => handleFeedback(answer)}
+            disabled={isDisabled}
+          >
             {answer}
           </Answer>
         ))}

@@ -21,10 +21,10 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const Answer = styled.div.attrs(props => ({
-  disabled: props.isDisabled
-}))`
-  background: ${props => (props.selectedAnswer ? "#000" : "#ccc")};
+export const Answer = styled.button`
+  background: ${props => (props.isSelectedAnswer ? "#555" : "#ccc")};
+  color: ${props => (props.isSelectedAnswer ? "#ccc" : "#555")};
+  border: 0;
   border-radius: 20px;
   padding: 10px 50px;
   cursor: pointer;
@@ -32,6 +32,6 @@ export const Answer = styled.div.attrs(props => ({
 
   &[disabled] {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: ${props => (props.isSelectedAnswer ? "null" : "0.2")};
   }
 `;

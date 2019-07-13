@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import data from "../data";
-import Questions from "./Questions";
-import GlobalStyle, {
-  Container,
-  QuestionContainer,
-  QuestionCounter
-} from "./AppStyles";
+import ShuffledAnswer from "./ShuffledAnswer";
+import { Container, QuestionContainer, QuestionCounter } from "./QuizStyles";
+import GlobalStyle from "./GlobalStyles";
 
 /*
 to dos:
@@ -15,11 +11,12 @@ to dos:
 [] fetch questions from the API: https://opentdb.com/api_config.php
 */
 
-function App() {
-  const quiz = data.results;
+function Quiz({ quiz }) {
   const totalQuestions = quiz.length;
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
+
+  console.log(score);
 
   return (
     <>
@@ -32,7 +29,7 @@ function App() {
             <QuestionCounter>
               {`Question ${index + 1} of ${totalQuestions}`}
             </QuestionCounter>
-            <Questions
+            <ShuffledAnswer
               question={quiz[index]}
               setIndex={setIndex}
               setScore={setScore}
@@ -44,4 +41,4 @@ function App() {
   );
 }
 
-export default App;
+export default Quiz;
