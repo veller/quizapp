@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     * {
@@ -21,4 +21,15 @@ export default createGlobalStyle`
         font-size: 14px;
         font-family: Arial, Helvetica, sans-serif;
     }
+`;
+
+export const SubmitButton = styled.button`
+  background: #ff7e67;
+  color: #eee;
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 30px;
 `;

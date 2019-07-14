@@ -16,14 +16,16 @@ export const Button = styled.button`
   background: #ff7e67;
   color: #eee;
   border: 0;
-  padding: 10px 15px;
+  padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
 `;
 
 export const Answer = styled.button`
-  background: ${props => (props.isSelectedAnswer ? "#555" : "#ccc")};
-  color: ${props => (props.isSelectedAnswer ? "#ccc" : "#555")};
+  background: ${props =>
+    props.isSelectedAnswer && props.isCorrect ? "green" : "#ccc"};
+  color: ${props => (props.isSelectedAnswer ? "#fff" : "#555")};
   border: 0;
   border-radius: 20px;
   padding: 10px 50px;

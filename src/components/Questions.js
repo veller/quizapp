@@ -30,20 +30,22 @@ function Questions({
     setDisabled(false);
   };
 
-  console.log(correctAnswer);
+  console.log("correct answer:", correctAnswer);
+  console.log("question:", question);
 
   return (
     <>
-      <QuestionTitle>{question.question}</QuestionTitle>
+      <QuestionTitle>{decodeURIComponent(question.question)}</QuestionTitle>
       <AnswersContainer>
         {shuffledAnswers.map(answer => (
           <Answer
             isSelectedAnswer={answer === isSelectedAnswer}
+            isCorrect={isCorrect}
             key={answer}
             onClick={() => handleFeedback(answer)}
             disabled={isDisabled}
           >
-            {answer}
+            {decodeURIComponent(answer)}
           </Answer>
         ))}
       </AnswersContainer>

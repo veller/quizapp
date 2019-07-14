@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import ShuffledAnswer from "./ShuffledAnswer";
+import Results from "./Results";
 import { Container, QuestionContainer, QuestionCounter } from "./QuizStyles";
 import GlobalStyle from "./GlobalStyles";
-
-/*
-to dos:
-[] style: visual feedback on the selected answer
-[] style: disable buttons after selecting answer
-   clean the disabled state when in the next question
-[] fetch questions from the API: https://opentdb.com/api_config.php
-*/
 
 function Quiz({ quiz }) {
   const totalQuestions = quiz.length;
@@ -23,7 +16,7 @@ function Quiz({ quiz }) {
       <GlobalStyle />
       <Container>
         {index === totalQuestions ? (
-          <div>The quiz has ended. your total score is {score}</div>
+          <Results score={score} totalQuestions={totalQuestions} />
         ) : (
           <QuestionContainer>
             <QuestionCounter>
