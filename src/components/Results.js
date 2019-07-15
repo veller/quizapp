@@ -1,9 +1,8 @@
 import React from "react";
 import { SubmitButton } from "./GlobalStyles";
 import { ResultsContainer, FeedbackMessage } from "./ResultsStyles";
-import Landing from "./Landing";
 
-const Results = ({ score, totalQuestions }) => {
+const Results = ({ score, totalQuestions, resetQuiz }) => {
   const rate = Math.floor((score / totalQuestions) * 100);
 
   const scoreEmoji = () => {
@@ -28,9 +27,7 @@ const Results = ({ score, totalQuestions }) => {
         You got {score} out of {totalQuestions} questions right - {rate}%
       </p>
       {scoreEmoji()}
-      <SubmitButton onClick={() => window.location.reload()}>
-        Start over
-      </SubmitButton>
+      <SubmitButton onClick={() => resetQuiz(true)}>Start over</SubmitButton>
     </ResultsContainer>
   );
 };

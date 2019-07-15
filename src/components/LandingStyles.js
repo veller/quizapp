@@ -77,8 +77,8 @@ export const Select = styled.select`
   font-size: 14px;
   border-color: #edf2f7;
   padding: 12px;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg viewbox='20 20 0 0' height='20' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'></path></svg>");
   background-repeat: no-repeat;
-  background-position-x: 100%;
-  background-position-y: 10px;
+  background-position-x: 99%;
+  background-position-y: 50%;
 `;

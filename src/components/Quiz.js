@@ -4,7 +4,7 @@ import Results from "./Results";
 import { Container, QuestionContainer, QuestionCounter } from "./QuizStyles";
 import GlobalStyle from "./GlobalStyles";
 
-function Quiz({ quiz }) {
+function Quiz({ quiz, resetQuiz }) {
   const totalQuestions = quiz.length;
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -16,7 +16,11 @@ function Quiz({ quiz }) {
       <GlobalStyle />
       <Container>
         {index === totalQuestions ? (
-          <Results score={score} totalQuestions={totalQuestions} />
+          <Results
+            score={score}
+            totalQuestions={totalQuestions}
+            resetQuiz={resetQuiz}
+          />
         ) : (
           <QuestionContainer>
             <QuestionCounter>

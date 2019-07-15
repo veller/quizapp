@@ -13,10 +13,7 @@ import Quiz from "./Quiz";
 
 /*
 to dos:
-[] Style when user clicks wrong answer - to red
 [] Add the "any" option to each of the selects
-[] Style the "select" element like Tailwind
-[] Go back to Landing once the quiz is finished
 */
 
 function Landing() {
@@ -25,6 +22,14 @@ function Landing() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("animals");
   const [selectedDifficulty, setSelectedDifficulty] = useState("easy");
+
+  const resetQuiz = () => {
+    setData([]);
+    setNumberOfQuestions(1);
+    setSelectedCategory("animals");
+    setSelectedDifficulty("easy");
+    setLanding(true);
+  };
 
   const categoriesData = [
     { category: "animals", id: 27 },
@@ -54,7 +59,7 @@ function Landing() {
   };
 
   if (!isLanding) {
-    return <Quiz quiz={data} />;
+    return <Quiz quiz={data} resetQuiz={resetQuiz} />;
   }
 
   return (

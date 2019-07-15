@@ -23,8 +23,10 @@ export const Button = styled.button`
 `;
 
 export const Answer = styled.button`
-  background: ${props =>
-    props.isSelectedAnswer && props.isCorrect ? "green" : "#ccc"};
+  background: ${props => {
+    if (!props.isSelectedAnswer) return "#ccc";
+    return props.isSelectedAnswer && props.isCorrect ? "green" : "#ff7e67";
+  }};
   color: ${props => (props.isSelectedAnswer ? "#fff" : "#555")};
   border: 0;
   border-radius: 20px;
